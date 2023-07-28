@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Employees from "./components/Employees";
+
 
 function App() {
+   
+  const[role ,setRole] = useState('')
+  const showEmployee = true;
+  console.log(role)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+   {/* it is ternary oprater using of this statment you can see only false value statement is paregraph and true value is show 
+   employess list  */}
+   <input type="text" onChange={ (e)=>{ 
+       setRole(e.target.value)
+   }} />
+  {showEmployee ? 
+  <>
+   <Employees name ={"raviraj"} role ={"develepor"} />
+   <Employees  name ={"tejas"} role ={"manager"} />
+   <Employees  name ={"chetanya"} role ={"HR"}/> 
+   <Employees  name ={"sumit"} role ={"tame leader"} />
+   <Employees  name ={"tejas"} role = {role} />
+   </>
+   : <p> are you not see employees  </p>
+  }
+  </>
   );
 }
 
